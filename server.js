@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 8080;
 
 //Load URL Models
-// const URL = require('./models/Urls');
+const URL = require('./models/Urls');
 
 //database key
 const db = require('./config/keys').mongoURI;
@@ -36,6 +36,14 @@ app.use('/api/redirect', redirect);
 app.get('/:hash', (req, res) => {
   const id = req.params.hash;
   console.log(id);
+  URL.findOne({ _id: id }, (err, doc) => {
+    if (doc) {
+      console.log(doc);
+      res.redirect(doc.url);
+    } else {
+      console.log('No');
+    }
+  });
 });
 
 app.get('/', (req, res) => {
