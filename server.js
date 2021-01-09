@@ -41,7 +41,8 @@ app.get('/:hash', (req, res) => {
       console.log(doc);
       res.redirect(doc.url);
     } else {
-      console.log('No');
+      console.log(err);
+      res.status(400).json({ message: 'The URL is expired' });
     }
   });
 });
