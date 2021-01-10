@@ -17,6 +17,7 @@ const URL = require('./models/Urls');
 //database key
 const db = require('./config/keys').mongoURI;
 // const db = process.env.CONNECTION_URL;
+console.log(process.env.CONNECTION_URL);
 console.log(db);
 
 mongoose

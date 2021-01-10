@@ -5,6 +5,15 @@ var { nanoid } = require('nanoid');
 //Load URL model
 const URL = require('../../models/Urls');
 
+router.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin,X-Requested-With,Content-Type,Accept'
+  );
+  next();
+});
+
 // @route GET  /api/shorten/test
 // @desc Test API End Point
 // @access Public
